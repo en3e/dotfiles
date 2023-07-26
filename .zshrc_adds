@@ -27,3 +27,7 @@ linpeasuse() {
 alias ligolo='cd ~/Documents/Tools/ligolo-ng/'
 
 alias ls='colorls'
+
+source $HOME/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export PATH=$PATH:$HOME/.cargo/bin
